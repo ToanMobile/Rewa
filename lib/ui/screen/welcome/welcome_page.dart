@@ -11,14 +11,12 @@ import 'package:rewa/ui/screen/login/widget/login_bg_widget.dart';
 import 'package:rewa/utils/assets_utils.dart';
 import 'package:rewa/utils/colors_utils.dart';
 import 'package:rewa/utils/dimens_utils.dart';
+import 'package:rewa/utils/log_utils.dart';
 import 'package:rewa/utils/screen_utils.dart';
 import 'package:rewa/utils/sizebox_utils.dart';
 import 'package:rewa/utils/text_styles_utils.dart';
 
-enum Login {
-  FACEBOOK,
-  GOOGLE
-}
+enum Login { FACEBOOK, GOOGLE }
 
 class WelcomePage extends StatefulWidget {
   @override
@@ -122,8 +120,18 @@ class WelcomeState extends State<WelcomePage> {
               flex: 0,
               child: Row(
                 children: <Widget>[
-                  SvgPicture.asset(AssetsUtils.iconFacebook, height: DimensUtils.size70),
-                  SvgPicture.asset(AssetsUtils.iconGoogle, height: DimensUtils.size70),
+                  InkWell(
+                    onTap: () {
+                      _handleSignIn(Login.FACEBOOK);
+                    },
+                    child: SvgPicture.asset(AssetsUtils.iconFacebook, height: DimensUtils.size70),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      _handleSignIn(Login.GOOGLE);
+                    },
+                    child: SvgPicture.asset(AssetsUtils.iconGoogle, height: DimensUtils.size70),
+                  ),
                 ],
               ),
             )
@@ -137,10 +145,8 @@ class WelcomeState extends State<WelcomePage> {
         FacebookLoginResult facebookLoginResult = await _handleFBSignIn();
         final accessToken = facebookLoginResult.accessToken.token;
         if (facebookLoginResult.status == FacebookLoginStatus.loggedIn) {
-          final facebookAuthCred =
-          FacebookAuthProvider.getCredential(accessToken: accessToken);
-          final user =
-          await firebaseAuth.signInWithCredential(facebookAuthCred);
+          final facebookAuthCred = FacebookAuthProvider.getCredential(accessToken: accessToken);
+          final user = await firebaseAuth.signInWithCredential(facebookAuthCred);
           print("User : " + user.user.displayName);
           return 1;
         } else
@@ -150,8 +156,7 @@ class WelcomeState extends State<WelcomePage> {
         try {
           GoogleSignInAccount googleSignInAccount = await _handleGoogleSignIn();
           final googleAuth = await googleSignInAccount.authentication;
-          final googleAuthCred = GoogleAuthProvider.getCredential(
-              idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
+          final googleAuthCred = GoogleAuthProvider.getCredential(idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
           final user = await firebaseAuth.signInWithCredential(googleAuthCred);
           print("User : " + user.user.displayName);
           return 1;
@@ -164,8 +169,7 @@ class WelcomeState extends State<WelcomePage> {
 
   Future<FacebookLoginResult> _handleFBSignIn() async {
     FacebookLogin facebookLogin = FacebookLogin();
-    FacebookLoginResult facebookLoginResult =
-    await facebookLogin.logIn(['email']);
+    FacebookLoginResult facebookLoginResult = await facebookLogin.logIn(['email']);
     switch (facebookLoginResult.status) {
       case FacebookLoginStatus.cancelledByUser:
         print("Cancelled");
@@ -181,8 +185,7 @@ class WelcomeState extends State<WelcomePage> {
   }
 
   Future<GoogleSignInAccount> _handleGoogleSignIn() async {
-    GoogleSignIn googleSignIn = GoogleSignIn(
-        scopes: ['email', 'https://www.googleapis.com/auth/contacts.readonly']);
+    GoogleSignIn googleSignIn = GoogleSignIn(scopes: ['email', 'https://www.googleapis.com/auth/contacts.readonly']);
     GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
     return googleSignInAccount;
   }

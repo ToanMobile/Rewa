@@ -26,6 +26,7 @@ class _LoginPageState extends State<LoginPage> {
   final _nameController = TextEditingController();
   final _passwordController = TextEditingController();
   final _pwdFocus = FocusNode();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -54,36 +55,39 @@ class _LoginPageState extends State<LoginPage> {
               return SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 padding: EdgeInsets.all(DimensUtils.size40),
-                child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.stretch, children: <Widget>[
-                  buildTextTitleLogin(),
-                  SizeBoxUtils.hGap10,
-                  SingUpWidget(_nameController),
-                  SizeBoxUtils.hGap40,
-                  buildTextUserName(),
-                  SizeBoxUtils.hGap10,
-                  LoginTextField(
-                    label: S.of(context).login_username,
-                    icon: Icons.person,
-                    controller: _nameController,
-                    textInputAction: TextInputAction.next,
-                    onFieldSubmitted: (text) {
-                      FocusScope.of(context).requestFocus(_pwdFocus);
-                    },
-                  ),
-                  SizeBoxUtils.hGap30,
-                  buildTextPassword(),
-                  SizeBoxUtils.hGap10,
-                  LoginTextField(
-                    controller: _passwordController,
-                    label: S.of(context).login_password,
-                    icon: Icons.vpn_key,
-                    obscureText: true,
-                    focusNode: _pwdFocus,
-                    textInputAction: TextInputAction.done,
-                  ),
-                  SizeBoxUtils.hGap30,
-                  LoginButton(_nameController, _passwordController)
-                ]),
+                child: Form(
+                  key: _formKey,
+                  child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.stretch, children: <Widget>[
+                    buildTextTitleLogin(),
+                    SizeBoxUtils.hGap10,
+                    SingUpWidget(_nameController),
+                    SizeBoxUtils.hGap40,
+                    buildTextUserName(),
+                    SizeBoxUtils.hGap10,
+                    LoginTextField(
+                      label: S.of(context).login_username,
+                      icon: Icons.person,
+                      controller: _nameController,
+                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (text) {
+                        FocusScope.of(context).requestFocus(_pwdFocus);
+                      },
+                    ),
+                    SizeBoxUtils.hGap30,
+                    buildTextPassword(),
+                    SizeBoxUtils.hGap10,
+                    LoginTextField(
+                      controller: _passwordController,
+                      label: S.of(context).login_password,
+                      icon: Icons.vpn_key,
+                      obscureText: true,
+                      focusNode: _pwdFocus,
+                      textInputAction: TextInputAction.done,
+                    ),
+                    SizeBoxUtils.hGap30,
+                    LoginButton(_formKey, _nameController, _passwordController)
+                  ]),
+                ),
               );
             },
           ),
@@ -102,8 +106,9 @@ class _LoginPageState extends State<LoginPage> {
 class LoginButton extends StatelessWidget {
   final nameController;
   final passwordController;
+  final _formKey;
 
-  LoginButton(this.nameController, this.passwordController);
+  LoginButton(this._formKey, this.nameController, this.passwordController);
 
   @override
   Widget build(BuildContext context) {
@@ -129,8 +134,8 @@ class LoginButton extends StatelessWidget {
         gradientColor: Constant.gradient_WaterMelon_Melon,
         child: child,
         cb: () {
-          var formState = Form.of(context);
-          if (formState.validate()) {
+          //var formState = Form.of(context);
+          if (_formKey.currentState.validate()) {
             model.login(nameController.text, passwordController.text).then((value) {
               if (value) {
                 Navigator.pushNamed(context, RouteName.home);
