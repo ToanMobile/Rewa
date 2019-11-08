@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" height="76px" version="1.1" viewBox="0 0 73 76" width="73px"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient id="linearGradient-1" x1="36.9738376%" x2="50%" y1="50%" y2="101.760925%">
+            <stop offset="0%" stop-color="#F78361"></stop>
+            <stop offset="100%" stop-color="#F54B64"></stop>
+        </linearGradient>
+        <path d="M30,60 C46.5685425,60 60,46.5685425 60,30 C60,13.4314575 46.5685425,0 30,0"
+            id="path-2"></path>
+        <filter filterUnits="objectBoundingBox" height="138.3%" id="filter-3" width="176.7%" x="-31.7%"
+            y="-22.5%">
+            <feMorphology in="SourceAlpha" operator="dilate" radius="3"
+                result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="2" dy="-2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feMorphology in="SourceAlpha" operator="erode" radius="3"
+                result="shadowInner"></feMorphology>
+            <feOffset dx="2" dy="-2" in="shadowInner" result="shadowInner"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out"
+                result="shadowOffsetOuter1"></feComposite>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1"
+                stdDeviation="2.5"></feGaussianBlur>
+            <feColorMatrix
+                in="shadowBlurOuter1"
+                type="matrix" values="0 0 0 0 0.960784314   0 0 0 0 0.356862745   0 0 0 0 0.388235294  0 0 0 0.361696897 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
+        <g id="Challenge" transform="translate(-44.000000, -250.000000)">
+            <g id="Group" transform="translate(47.000000, 260.000000)">
+                <circle cx="30" cy="30" id="Oval" r="30" stroke="#E6E6E6" stroke-width="6"></circle>
+                <g id="Oval" stroke-linecap="round" stroke-linejoin="round">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)"
+                        xlink:href="#path-2"></use>
+                    <use stroke="url(#linearGradient-1)" stroke-width="6"
+                        xlink:href="#path-2"></use>
+                </g>
+                <text fill="#172036" font-family="AvenirNext-DemiBold, Avenir Next" font-size="15"
+                    font-weight="500" id="50%">
+                    <tspan x="14" y="35">50%</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
