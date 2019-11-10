@@ -48,8 +48,8 @@ class S implements WidgetsLocalizations {
   String get home_menu_technology => "Technology";
   String get home_search => "What products do you want to search and review?";
   String get login_confirm_password => "Confirm Password";
-  String get login_content1 => "Do not have an account? So let's ";
-  String get login_content2 => "right away";
+  String get login_content1 => "Do not have an account? So let's\u0020";
+  String get login_content2 => "\u0020right away";
   String get login_password => "Password";
   String get login_title => "Username";
   String get login_username => "Username";
@@ -60,8 +60,8 @@ class S implements WidgetsLocalizations {
   String get refreshTwoLevel => "release to enter second floor";
   String get register_complete => "Registration successful";
   String get register_content => "Thank you for taking the time to register for an account with Werry. Now start the experience!";
-  String get register_content1 => "Do you already have an account? So please ";
-  String get register_content2 => " okay";
+  String get register_content1 => "Do you already have an account? So please\u0020";
+  String get register_content2 => "\u0020okay";
   String get retry => "Retry";
   String get setting => "Setting";
   String get settingFont => "System Font";
@@ -137,9 +137,9 @@ class $vi_VN extends S {
   @override
   String get tab_home => "Trang chủ";
   @override
-  String get login_content1 => "Bạn chưa có tài khoản? Vậy hãy ";
+  String get login_content1 => "Bạn chưa có tài khoản? Vậy hãy\u0020";
   @override
-  String get login_content2 => "ngay nhé";
+  String get login_content2 => "\u0020ngay nhé";
   @override
   String get login_username => "Tài khoản";
   @override
@@ -161,11 +161,11 @@ class $vi_VN extends S {
   @override
   String get login_confirm_password => "Xác nhận mật khẩu";
   @override
-  String get register_content2 => " nhé";
+  String get register_content2 => "\u0020nhé";
   @override
   String get noAccount => "Không tìm thấy tài khoản?";
   @override
-  String get register_content1 => "Bạn đã có tài khoản? Vậy hãy ";
+  String get register_content1 => "Bạn đã có tài khoản? Vậy hãy\u0020";
   @override
   String get challenge_before => "Trước đây";
   @override

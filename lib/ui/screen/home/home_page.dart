@@ -26,7 +26,6 @@ class HomeState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizeBoxUtils.hGap20,
             buildTextUserName(),
             SizeBoxUtils.hGap10,
             buildTextSearch(),
@@ -46,8 +45,10 @@ class HomeState extends State<HomePage> {
   }
 
   Widget buildTextUserName() => Container(
+        alignment: Alignment.bottomCenter,
         width: MediaQuery.of(context).size.width,
-        child: Text(S.of(context).login_username, textAlign: TextAlign.center, style: TextStylesUtils.styleAvenir20CoalGreyW600),
+        height: MediaQuery.of(context).size.height * 0.13,
+        child: Text('Toàn Dev', textAlign: TextAlign.center, style: TextStylesUtils.styleAvenir20CoalGreyW600),
       );
 
   Widget buildTextSearch() => Container(
@@ -67,7 +68,7 @@ class HomeState extends State<HomePage> {
       );
 
   Widget buildListSuggest() {
-    final titles = ['iPhone XR', 'Samsung Galaxy Note 10', 'Oppo','iPhone XR', 'Samsung Galaxy Note 10', 'Oppo'];
+    final titles = ['iPhone XR', 'Samsung Galaxy Note 10', 'Oppo', 'iPhone XR', 'Samsung Galaxy Note 10', 'Oppo'];
     return Container(
       margin: EdgeInsets.symmetric(horizontal: DimensUtils.size16),
       height: DimensUtils.size30,
@@ -78,7 +79,11 @@ class HomeState extends State<HomePage> {
           return Container(
             margin: EdgeInsets.symmetric(horizontal: DimensUtils.size4),
             padding: const EdgeInsets.all(DimensUtils.size8),
-            child: Text(titles[index], textAlign: TextAlign.center, style: TextStylesUtils.styleAvenir12CoralW400,),
+            child: Text(
+              titles[index],
+              textAlign: TextAlign.center,
+              style: TextStylesUtils.styleAvenir12CoralW400,
+            ),
             decoration: BoxDecoration(
               border: Border.all(width: 0.5, color: ColorsUtils.coral),
               borderRadius: BorderRadius.all(Radius.circular(5.0)),

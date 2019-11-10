@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "60051855573",
+    "firebase_url": "https://rewa-c531c.firebaseio.com",
+    "project_id": "rewa-c531c",
+    "storage_bucket": "rewa-c531c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60051855573:android:1adbe524f62bd19cdc6a5c",
+        "android_client_info": {
+          "package_name": "com.ctk.rewa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60051855573-9og5ebt8l0pmeotdd9cau5plajsllor8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ctk.rewa",
+            "certificate_hash": "9f4a63ad5817c34ac40f7c55403a8b6f3852962b"
+          }
+        },
+        {
+          "client_id": "60051855573-rpl3o5n3172qi6eseqh5qplhoicvk07f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB90Jz6G479CPTv1FHiShv2rrBG0GqjHkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60051855573-rpl3o5n3172qi6eseqh5qplhoicvk07f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

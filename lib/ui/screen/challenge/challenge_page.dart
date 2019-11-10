@@ -23,7 +23,6 @@ class ChallengeState extends State<ChallengePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizeBoxUtils.hGap20,
             buildTextChallenge(),
             SizeBoxUtils.hGap10,
             buildTextContent(),
@@ -31,6 +30,7 @@ class ChallengeState extends State<ChallengePage> {
             buildLayoutTitleChallenge(),
             SizeBoxUtils.hGap20,
             buildTextTitleChallenge(),
+            SizeBoxUtils.hGap20,
             buildListChallengeNow(),
             SizeBoxUtils.hGap20,
             buildTextTitleListChallenge(),
@@ -41,7 +41,12 @@ class ChallengeState extends State<ChallengePage> {
     );
   }
 
-  Widget buildTextChallenge() => Text(S.of(context).tab_challenge, style: TextStylesUtils.styleAvenir20CoalGreyW600);
+  Widget buildTextChallenge() => Container(
+    alignment: Alignment.bottomLeft,
+    width: MediaQuery.of(context).size.width,
+    height: MediaQuery.of(context).size.height * 0.1,
+    child: Text(S.of(context).tab_challenge, style: TextStylesUtils.styleAvenir20CoalGreyW600),
+  );
 
   Widget buildTextContent() => Text(S.of(context).challenge_content, style: TextStylesUtils.styleAvenir14CoalGreyW400);
 
@@ -54,7 +59,7 @@ class ChallengeState extends State<ChallengePage> {
         child: Row(
           children: <Widget>[
             Text(S.of(context).challenge_now, textAlign: TextAlign.center, style: TextStylesUtils.styleAvenir20CoalGreyW600),
-            SizeBoxUtils.wGap30,
+            SizeBoxUtils.wGap60,
             Text(S.of(context).challenge_before, textAlign: TextAlign.center, style: TextStylesUtils.styleAvenir20VeryLightPinkThreeW600)
           ],
         ),
@@ -136,9 +141,10 @@ class ChallengeState extends State<ChallengePage> {
   }
 
   Widget buildListChallenge() {
-    final titles = ['iPhone XR', 'Samsung Galaxy Note 10', 'Oppo', 'iPhone XR', 'Samsung Galaxy Note 10', 'Oppo'];
+    final titles = ['iPhone XR', 'Samsung Galaxy Note 10', 'Oppo', 'iPhone XR', 'Samsung Galaxy Note 10', 'Oppo', 'Oppo', 'Oppo'];
     return Container(
-      height: DimensUtils.size300,
+      height: DimensUtils.size350,
+      alignment: Alignment.topCenter,
       child: ListView.builder(
         itemCount: titles.length,
         itemBuilder: (context, index) {
